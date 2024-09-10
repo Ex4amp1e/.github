@@ -13,7 +13,7 @@ jobs:
     env:
       DOCKER_USER: ${{ secrets.docker-login }}
       DOCKER_PASSWORD: ${{ secrets.docker-password }}
-      ORG: networkservicemeshci
+      ORG: Ex4amp1eci
       CGO_ENABLED: 0
       NAME: ${{ github.event.repository.name }}
     steps:

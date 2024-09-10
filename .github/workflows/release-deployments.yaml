@@ -16,7 +16,7 @@ jobs:
       - name: Checkout deployments-k8s
         uses: actions/checkout@v4
         with:
-          repository: networkservicemesh/deployments-k8s
+          repository: Ex4amp1e/deployments-k8s
           token: ${{ secrets.token }}
 
       - name: Push update to the deployments-k8s
@@ -31,7 +31,7 @@ jobs:
           git push origin $branch
 
           if [ "$?" != 0 ]; then
-            gh workflow run check-tag.yaml -f branch=$branch --ref=$branch --repo networkservicemesh/deployments-k8s
+            gh workflow run check-tag.yaml -f branch=$branch --ref=$branch --repo Ex4amp1e/deployments-k8s
           fi
         env:
           GH_TOKEN: ${{ secrets.token }}

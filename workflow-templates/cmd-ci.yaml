@@ -37,7 +37,7 @@ jobs:
   golangci-lint:
     name: golangci-lint
     runs-on: ubuntu-latest
-    if: github.repository != 'networkservicemesh/cmd-template'
+    if: github.repository != 'Ex4amp1e/cmd-template'
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
@@ -65,16 +65,16 @@ jobs:
           fi
 
   restrictNSMDeps:
-    name: Restrict dependencies on github.com/networkservicemesh/*
+    name: Restrict dependencies on github.com/Ex4amp1e/*
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Restrict dependencies on github.com/networkservicemesh/*
+      - name: Restrict dependencies on github.com/Ex4amp1e/*
         env:
           ALLOWED_REPOSITORIES: "sdk, api, sdk-k8s, sdk-vpp, sdk-sriov"
         run: |
-          for i in $(grep github.com/networkservicemesh/ go.mod | grep -v '^module' | sed 's;.*\(github.com\/networkservicemesh\/[^ ]*\).*;\1;g');do
-            if ! [ "$(echo ${ALLOWED_REPOSITORIES} | grep ${i#github.com/networkservicemesh/})" ]; then
+          for i in $(grep github.com/Ex4amp1e/ go.mod | grep -v '^module' | sed 's;.*\(github.com\/Ex4amp1e\/[^ ]*\).*;\1;g');do
+            if ! [ "$(echo ${ALLOWED_REPOSITORIES} | grep ${i#github.com/Ex4amp1e/})" ]; then
               echo Dependency on "${i}" is forbidden
               exit 1
             fi;
@@ -120,7 +120,7 @@ jobs:
   docker:
     name: Docker Build & Test
     runs-on: ubuntu-latest
-    if: github.repository != 'networkservicemesh/cmd-template'
+    if: github.repository != 'Ex4amp1e/cmd-template'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5

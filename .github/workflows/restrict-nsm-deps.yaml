@@ -1,5 +1,5 @@
 ---
-name: Restrict dependencies on github.com/networkservicemesh/*
+name: Restrict dependencies on github.com/Ex4amp1e/*
 on:
   workflow_call:
     inputs:
@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Restrict dependencies on github.com/networkservicemesh/*
+      - name: Restrict dependencies on github.com/Ex4amp1e/*
         env:
           ALLOWED_REPOSITORIES: ${{ inputs.allowed_repositories }}
         run: |
-          for i in $(grep github.com/networkservicemesh/ go.mod | grep -v '^module' | sed 's;.*\(github.com\/networkservicemesh\/[^ ]*\).*;\1;g');do
-            if ! [ "$(echo ${ALLOWED_REPOSITORIES} | grep ${i#github.com/networkservicemesh/})" ]; then
+          for i in $(grep github.com/Ex4amp1e/ go.mod | grep -v '^module' | sed 's;.*\(github.com\/Ex4amp1e\/[^ ]*\).*;\1;g');do
+            if ! [ "$(echo ${ALLOWED_REPOSITORIES} | grep ${i#github.com/Ex4amp1e/})" ]; then
               echo Dependency on "${i}" is forbidden
               exit 1
             fi

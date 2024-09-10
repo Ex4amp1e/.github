@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: networkservicemesh/.github
+          repository: Ex4amp1e/.github
           path: .github
       - uses: actions/checkout@v4
         with:
