@@ -53,9 +53,9 @@ jobs:
       - name: Update version manually
         run: |
           branch=${{ inputs.pr_branch_ref }}
-          repository=${branch#update/networkservicemesh/}
+          repository=${branch#update/Ex4amp1e/}
           echo Update ${repository} version in go.mod manually
-          go get -u github.com/networkservicemesh/${repository}@main
+          go get -u github.com/Ex4amp1e/${repository}@main
       - name: Re-generate go.sum
         run: go mod tidy
       - name: Push changes
