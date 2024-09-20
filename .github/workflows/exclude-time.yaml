@@ -1,0 +1,15 @@
+---
+name: Exclude time
+on:
+  workflow_call:
+jobs:
+  exclude-time:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exclude time
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.Sleep . ; then
+           echo "Please use clockmock as appropriate rather than time.Sleep"
+           exit 1
+          fi
