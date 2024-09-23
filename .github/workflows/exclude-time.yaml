@@ -7,9 +7,75 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Exclude time
+      - name: Exclude time.Now
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.Now . ; then
+           echo "Please use clock.Now as appropriate rather than time.Now"
+           exit 1
+          fi
+      - name: Exclude time.Since
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.Since . ; then
+           echo "Please use clock.Since as appropriate rather than time.Since"
+           exit 1
+          fi
+      - name: Exclude time.Until
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.Until . ; then
+           echo "Please use clock.Until as appropriate rather than time.Until"
+           exit 1
+          fi
+      - name: Exclude time.Sleep
         run: |
           if grep -r --include=*.go --exclude=*/clock/*  time.Sleep . ; then
-           echo "Please use clockmock as appropriate rather than time.Sleep"
+           echo "Please use clock.Sleep as appropriate rather than time.Sleep"
+           exit 1
+          fi
+      - name: Exclude time.NewTimer
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.NewTimer . ; then
+           echo "Please use clock.Timer as appropriate rather than time.NewTimer"
+           exit 1
+          fi
+      - name: Exclude time.After
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.After . ; then
+           echo "Please use clock.After as appropriate rather than time.After"
+           exit 1
+          fi
+      - name: Exclude time.AfterFunc
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.AfterFunc . ; then
+           echo "Please use clock.AfterFunc as appropriate rather than time.AfterFunc"
+           exit 1
+          fi
+      - name: Exclude time.Ticker
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.Tick . ; then
+           echo "Please use clock as appropriate rather than time.Tick"
+           exit 1
+          fi
+      - name: Exclude time.WithDeadline
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.WithDeadline . ; then
+           echo "Please use clock as appropriate rather than time.WithDeadline"
+           exit 1
+          fi
+      - name: Exclude time.WithTimeout
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.WithTimeout . ; then
+           echo "Please use clock as appropriate rather than time.WithTimeout"
+           exit 1
+          fi
+      - name: Exclude context.WithDeadline
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  context.WithDeadline . ; then
+           echo "Please use clock.WithDeadline as appropriate rather than context.WithDeadline"
+           exit 1
+          fi
+      - name: Exclude time.WithTimeout
+        run: |
+          if grep -r --include=*.go --exclude=*/clock/*  time.WithTimeout . ; then
+           echo "Please use clock.WithTimeout as appropriate rather than time.WithTimeout"
            exit 1
           fi
